@@ -9,8 +9,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "prettier": "^3.3.3"
-  }
+  "description": ""
 }
