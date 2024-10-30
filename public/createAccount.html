@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-orange-400 flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-2xl w-full max-w-md">
+        <h2 class="text-3xl font-bold text-center mb-6">Register</h2>
+        <form>
+            <div class="grid grid-cols gap-4 mb-4">
+                <label for="name" class="block text-sm font-medium">Name:</label>
+                <input type="text" id="name" name="name" required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                <label for="username" class="block text-sm font-medium">Username:</label>
+                <input type="text" id="username" name="username" required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                <label for="password" class="block text-sm font-medium">Password:</label>
+                <input type="password" id="password" name="password" required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                <label for="confirm-password" class="block text-sm font-medium">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <button type="submit" class="w-full bg-stone-700 text-white p-2 rounded transition duration-200 hover:bg-stone-600">Register</button>
+        </form>
+    </div>
+</body>
+</html>
