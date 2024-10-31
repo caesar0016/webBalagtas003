@@ -34,14 +34,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['accountid'] = (int)$user['accountid']; // Cast to int for clarity
 
             echo "Login successful! Welcome, " . $_SESSION['name'] . ".";
-            // header('Location: mainPage.php'); // Redirect to a welcome page
-            // exit();
+            header('Location: mainPage.php'); // Redirect to a welcome page
+            exit();
         } else {
-            header("Location: login.php?message=Invalid username or password or account not active.");
+            $_SESSION['error'] = "Invalid username or password";
+            header("Location: login.php");
             exit;
         }
     } else {
-        header("Location: login.php?message=Invalid username or password or account not active.");
+        $_SESSION['error'] = "An error occurred during login. Please try again.";
+        header("Location: login.php");
         echo "Error: " . pg_last_error($conn); // Query execution error
     }
 }
