@@ -20,9 +20,12 @@ $username = $_POST['username01'];
 $password = $_POST['password01'];
 $accountType1 = $_POST['account_type']; // Use accountType01 here
 
+$hashPass = password_hash($password, PASSWORD_DEFAULT);
+
+
 
 $query = "Insert into tblAccount(name, username, password, accountType) values($1, $2, $3, $4)";
-$result = pg_query_params($conn, $query, array($name, $username, $password, $accountType1));
+$result = pg_query_params($conn, $query, array($name, $username, $hashPass, $accountType1));
 
 if ($result) {
     echo "Account created successfully!";
