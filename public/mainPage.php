@@ -3,16 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Button Click Alert</title>
-    <script>
-        function showAlert() {
-            alert('Button clicked!');
-        }
-    </script>
+    <title>Main Page</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-
-    <button onclick="showAlert()">Click Me!</button>
-
+<body class="bg-white">
+    <div class="container bg-amber-900 mx-auto">
+    </div>
+    
 </body>
 </html>
