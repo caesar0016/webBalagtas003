@@ -19,7 +19,7 @@ if (isset($_GET['message'])) {
         <div class="w-1/3 flex items-center justify-center bg-orange-300">
             <div class="bg-white p-8 rounded-lg shadow-2xl w-full max-w-sm"> <!-- Card with stronger shadow -->
                 <h2 class="text-3xl font-bold text-center mb-6">Login</h2>
-                <form action="loginValidate.php" method="post">
+                <form action="loginValidate.php" method="POST">
                     <label for="username" class="block mb-2 text-sm font-medium">Username:</label>
                     <input type="text" id="username" name="loginUser" required class="border border-gray-300 p-2 rounded w-full mb-4" placeholder="Enter your username">
                     

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Page</title>
+    <title>Settings</title>
     <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -12,7 +12,7 @@
         <a href="mainPage.php" target="_top" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 transition duration-200 text-lg">
             &times; <!--Should Replace it-->
         </a>
-        <h2 class="text-3xl font-bold text-center mb-6">Register</h2>
+        <h2 class="text-3xl font-bold text-center mb-6">Account Settings</h2>
         <form action="register.php" method="POST" id="accountForm">
             <div class="grid grid-cols gap-4 mb-4">
                 <label for="name" class="block text-sm font-medium">Name:</label>
@@ -21,24 +21,12 @@
                 <label for="username" class="block text-sm font-medium">Username:</label>
                 <input type="text" id="username" name="username01" required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
 
-                <label for="password" class="block text-sm font-medium">Password:</label>
+                <label for="password" class="block text-sm font-medium">New Password:</label>
                 <input type="password" id="password" name="password01" required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500" maxlength="20">
 
                 <label for="confirm-password" class="block text-sm font-medium">Confirm Password:</label>
                 <input type="password" id="confirm-password" name="confirmPass01" required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500" maxlength="20">
                 <div id="error" class="hidden text-red-500">Passwords do not match!</div>
-
-                <fieldset class="mt-4">
-                    <legend class="block text-sm font-medium mb-2">Account Type:</legend>
-                    <div class="flex items-center mb-2">
-                        <input type="radio" id="regular" name="account_type" value="Regular" class="mr-2 border-gray-300 focus:ring-2 focus:ring-blue-500" required>
-                        <label for="regular" class="text-sm">Regular Account</label>
-                    </div>
-                    <div class="flex items-center mb-2">
-                        <input type="radio" id="admin" name="account_type" value="Admin" class="mr-2 border-gray-300 focus:ring-2 focus:ring-blue-500" required>
-                        <label for="admin" class="text-sm">Admin Account</label>
-                    </div>
-                </fieldset>
                 
             </div>
             <button type="submit" class="w-full bg-stone-700 text-white p-2 rounded transition duration-200 hover:bg-stone-600">Register</button>

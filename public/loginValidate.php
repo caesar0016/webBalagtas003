@@ -1,4 +1,5 @@
 <?php
+session_start(); // Start the session
 $host = "localhost";
 $port = "5432";
 $dbName = "webBalagtas01";
@@ -20,23 +21,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $passwordInput = $_POST['loginPass']; // Keep the original password input
 
     // Prepare the SQL query
-    $query = "SELECT * FROM tblAccount WHERE username = $1";
+    $query = "SELECT * FROM tblAccount WHERE username = $1 AND archiveFlag = 1"; // Only fetch active accounts
+
     $result = pg_query_params($conn, $query, array($usernameInput));
 
     if ($result) {
         $user = pg_fetch_assoc($result); // Fetch the user data
-
+        // Check if the user exists and password is correct
         if ($user && password_verify($passwordInput, $user['password'])) {
-            echo "Login successful! Welcome, " . htmlspecialchars($user['name']) . ".";
-            $_SESSION['username'] = $username;
-            header('Location: mainPage.php'); // Redirect to a welcome page
-            exit();
-            header("Location: mainPage.php");
+            // Store user's name and account ID in the session
+            $_SESSION['name'] = htmlspecialchars($user['name']); //retrieving from db is case sensitive
+            $_SESSION['accountid'] = (int)$user['accountid']; // Cast to int for clarity
+
+            echo "Login successful! Welcome, " . $_SESSION['name'] . ".";
+            // header('Location: mainPage.php'); // Redirect to a welcome page
+            // exit();
         } else {
-            header("Location: login.php?message=Invalid username or password.");
+            header("Location: login.php?message=Invalid username or password or account not active.");
             exit;
         }
     } else {
+        header("Location: login.php?message=Invalid username or password or account not active.");
         echo "Error: " . pg_last_error($conn); // Query execution error
     }
 }

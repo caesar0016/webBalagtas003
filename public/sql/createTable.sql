@@ -4,8 +4,13 @@ create table tblAccount(
     name varchar(45),
     username varchar(45),
     password text,
-    accountType varchar(45)
+    accountType varchar(45),
+    archiveFlag smallint DEFAULT 1
 
 );
 
-select * from tblAccount
+Select * from tblAccount
+
+update tblAccount
+set archiveFlag = 2
+where
