@@ -12,22 +12,38 @@
             &times; <!--Should Replace it-->
         </a>
         <h2 class="text-3xl font-bold text-center mb-6">Register</h2>
-        <form>
+        <form action="register.php" method="POST">
             <div class="grid grid-cols gap-4 mb-4">
                 <label for="name" class="block text-sm font-medium">Name:</label>
-                <input type="text" id="name" name="name" required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="text" id="name" name="name01" required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
 
                 <label for="username" class="block text-sm font-medium">Username:</label>
-                <input type="text" id="username" name="username" required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="text" id="username" name="username01" required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
 
                 <label for="password" class="block text-sm font-medium">Password:</label>
-                <input type="password" id="password" name="password" required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="password" id="password" name="password01" required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
 
                 <label for="confirm-password" class="block text-sm font-medium">Confirm Password:</label>
-                <input type="password" id="confirm-password" name="confirm-password" required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="password" id="confirm-password" name="confirm-password01" required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                
+                <fieldset class="mt-4">
+                    <legend class="block text-sm font-medium mb-2">Account Type:</legend>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" id="regular" name="account_type" value="Reguar" class="mr-2 border-gray-300 focus:ring-2 focus:ring-blue-500" required>
+                        <label for="regular" class="text-sm">Regular Account</label>
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" id="admin" name="account_type" value="Admin" class="mr-2 border-gray-300 focus:ring-2 focus:ring-blue-500" required>
+                        <label for="admin" class="text-sm">Admin Account</label>
+                    </div>
+                </fieldset>
+                
             </div>
             <button type="submit" class="w-full bg-stone-700 text-white p-2 rounded transition duration-200 hover:bg-stone-600">Register</button>
         </form>
     </div>
 </body>
 </html>
+
+
+

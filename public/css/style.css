@@ -582,6 +582,14 @@ video {
   margin-bottom: 1.5rem;
 }
 
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
 .block {
   display: block;
 }
@@ -620,6 +628,10 @@ video {
 
 .max-w-sm {
   max-width: 24rem;
+}
+
+.flex-col {
+  flex-direction: column;
 }
 
 .items-center {
