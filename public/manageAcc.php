@@ -1,5 +1,5 @@
 <?php
-    include ("header.html");
+    include ("adminHeader.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,10 +19,8 @@
                 <thead>
                     <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                         <th class="py-3 px-6 text-left">Name</th>
-                        <th class="py-3 px-6 text-left">Email</th>
-                        <th class="py-3 px-6 text-left">Role</th>
-                        <th class="py-3 px-6 text-left">Status</th>
-                        <th class="py-3 px-6 text-left">Actions</th> <!-- New header for actions -->
+                        <th class="py-3 px-6 text-left">Username</th>
+                        <th class="py-3 px-6 text-left">Account Type</th>
                     </tr>
                 </thead>
                 <tbody class="text-gray-600 text-sm font-light">
@@ -30,29 +28,11 @@
                         <td class="py-3 px-6">John Doe</td>
                         <td class="py-3 px-6">john@example.com</td>
                         <td class="py-3 px-6">Admin</td>
-                        <td class="py-3 px-6">Active</td>
                         <td class="py-3 px-6">
                             <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Edit Account</button>
                         </td> <!-- Edit button -->
                     </tr>
-                    <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6">Jane Smith</td>
-                        <td class="py-3 px-6">jane@example.com</td>
-                        <td class="py-3 px-6">Editor</td>
-                        <td class="py-3 px-6">Inactive</td>
-                        <td class="py-3 px-6">
-                            <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Edit Account</button>
-                        </td> <!-- Edit button -->
-                    </tr>
-                    <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6">Emily Johnson</td>
-                        <td class="py-3 px-6">emily@example.com</td>
-                        <td class="py-3 px-6">Viewer</td>
-                        <td class="py-3 px-6">Active</td>
-                        <td class="py-3 px-6">
-                            <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Edit Account</button>
-                        </td> <!-- Edit button -->
-                    </tr>
+                    
                 </tbody>
             </table>
         </div>

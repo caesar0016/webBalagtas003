@@ -1,5 +1,5 @@
 <?php
-    include ("adminHeader.php");
+    include ("regularHeader.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">

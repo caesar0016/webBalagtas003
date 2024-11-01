@@ -30,12 +30,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Check if the user exists and password is correct
         if ($user && password_verify($passwordInput, $user['password'])) {
             // Store user's name and account ID in the session
+       //     $_SESSION['name'] = is the session variable name
             $_SESSION['name'] = htmlspecialchars($user['name']); //retrieving from db is case sensitive
+            $_SESSION['accountType'] = htmlspecialchars($user['accounttype']); //retrieving from db is case sensitive
             $_SESSION['accountid'] = (int)$user['accountid']; // Cast to int for clarity
 
-            echo "Login successful! Welcome, " . $_SESSION['name'] . ".";
-            header('Location: mainPage.php'); // Redirect to a welcome page
-            exit();
+            if(isset($_SESSION['accountType'])){
+                $accountType01 = $_SESSION['accountType'];
+
+                if($accountType01 == 'Admin'){
+                    //insert code here if its an admin
+                    echo $_SESSION['accountType'];
+                    //   echo $_SESSION['accountType'];
+                    header('Location: mainPage.php'); // Redirect to a welcome page
+                    exit();
+                }elseif($accountType01 == 'Regular'){
+                    //insert code here if its regular
+                    header('Location: homeRegular.php'); // Redirect to a welcome page
+                    exit();
+                }else{
+                    //insert code here if its regular
+                    header('Location: homeRegular.php'); // Redirect to a welcome page
+                    exit();
+                }
+            }
+            
         } else {
             $_SESSION['error'] = "Invalid username or password";
             header("Location: login.php");
