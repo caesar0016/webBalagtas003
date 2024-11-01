@@ -1,3 +1,6 @@
+<?php
+    include ("header.html");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +11,6 @@
     
 </head>
 <body>
-
-
 <div class="max-w-4xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
     <div class="p-6">
         <h2 class="text-lg font-semibold mb-4">User Accounts</h2>

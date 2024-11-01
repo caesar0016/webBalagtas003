@@ -1,3 +1,6 @@
+<?php
+    include ("header.html");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +10,8 @@
     <link rel="stylesheet" href="css/style.css">
 
 </head>
-<body class="bg-orange-400 flex items-center justify-center h-screen relative">
+<body>
+    <div class="bg-orange-400 flex items-center justify-center h-screen relative">
     <div class="bg-white p-8 rounded-lg shadow-2xl w-full max-w-md relative">
         <a href="mainPage.php" target="_top" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 transition duration-200 text-lg">
             &times; <!--Should Replace it-->
@@ -31,6 +35,7 @@
             </div>
             <button type="submit" class="w-full bg-stone-700 text-white p-2 rounded transition duration-200 hover:bg-stone-600">Register</button>
         </form>
+    </div>
     </div>
     <script>
         document.getElementById('accountForm').addEventListener('submit', function (event) {
