@@ -22,6 +22,13 @@ session_start();
                 </div>
             </div>
         </div>
+        <div class="text-3xl font-small">
+            <?php
+            if (isset($_SESSION['username01'])) {
+                echo htmlspecialchars($_SESSION['username01']);
+            }
+            ?>
+        </div>
     </section>
 </header>
 <script>

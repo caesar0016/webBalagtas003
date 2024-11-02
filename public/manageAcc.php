@@ -1,5 +1,25 @@
 <?php
     include ("adminHeader.php");
+    include ("connection.php");
+
+        // connection.php
+    $host = 'localhost';
+    $db = 'webBalagtas01';
+    $user = 'postgres';
+    $pass = 'Kuz18647';
+
+    try {
+        $pdo = new PDO("pgsql:host=$host;dbname=$db", $user, $pass);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch (PDOException $e) {
+        echo "Connection failed: " . $e->getMessage();
+        exit();
+    }
+
+    $sql = "select * from tblAccount";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,16 +44,25 @@
                     </tr>
                 </thead>
                 <tbody class="text-gray-600 text-sm font-light">
+                    <?php foreach ($users as $user): ?>
                     <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6">John Doe</td>
-                        <td class="py-3 px-6">john@example.com</td>
-                        <td class="py-3 px-6">Admin</td>
+                        <td class="py-3 px-6"><?php echo htmlspecialchars($user['name']); ?></td>
+                        <td class="py-3 px-6"><?php echo htmlspecialchars($user['username']); ?></td>
+                        <td class="py-3 px-6"><?php echo htmlspecialchars($user['accounttype']); ?></td>
                         <td class="py-3 px-6">
-                            <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Edit Account</button>
-                        </td> <!-- Edit button -->
+                        <form action="editOthersAcc.php" method="post" class="flex flex-col items-start space-y-4" id="editFrm">
+                            <input type="hidden" name="sendID" value="<?php echo htmlspecialchars($user['accountid']); ?>">
+                            <button type="submit" name="submitButton" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                                Edit Account
+                            </button>
+                        </form>
+
+                        </td>
+
                     </tr>
-                    
+                    <?php endforeach; ?>
                 </tbody>
+
             </table>
         </div>
     </div>

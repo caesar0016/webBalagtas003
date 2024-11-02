@@ -24,8 +24,13 @@
                     <input type="text" id="name" name="name01" required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
     
                     <label for="username" class="block text-sm font-medium">Username:</label>
-                    <input type="text" id="username" name="username01" required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
-    
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username01" 
+                        required 
+                        class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        oninput="this.value = this.value.replace(/\s/g, '');"> <!--Disables pressing space-->
                     <label for="password" class="block text-sm font-medium">Password:</label>
                     <input type="password" id="password" name="password01" required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500" maxlength="20">
     

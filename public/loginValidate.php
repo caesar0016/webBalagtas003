@@ -33,7 +33,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
        //     $_SESSION['name'] = is the session variable name
             $_SESSION['name'] = htmlspecialchars($user['name']); //retrieving from db is case sensitive
             $_SESSION['accountType'] = htmlspecialchars($user['accounttype']); //retrieving from db is case sensitive
+            $_SESSION['username01'] = htmlspecialchars($user['username']); //retrieving from db is case sensitive
             $_SESSION['accountid'] = (int)$user['accountid']; // Cast to int for clarity
+
+            echo $_SESSION['username01'];
 
             if(isset($_SESSION['accountType'])){
                 $accountType01 = $_SESSION['accountType'];

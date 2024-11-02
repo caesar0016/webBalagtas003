@@ -14,9 +14,11 @@ $conn = pg_connect($connectionString);
 // Check connection
 if (!$conn) {
     die("Connection Failed: " . pg_last_error());
+}else{
+    echo "Connected Successfully";
 }
 
-echo "Connected Successfully";
+
 
 // Close the connection
 pg_close($conn);
