@@ -16,6 +16,8 @@ $conn = pg_connect($connectionString);
 // Check connection
 if (!$conn) {
     die("Connection Failed: " . pg_last_error());
+}else{
+    echo "Connected Successfully";
 }
 
 $user = null; // Initialize user variable
@@ -86,16 +88,29 @@ pg_close($conn);
                     <span class="ml-2 text-gray-700">Regular</span>
                 </label>
             </div>
-
             <!--This is the end of radio button-->
-
             </div>
             </div>
-            <button type="submit" class="w-full bg-stone-700 text-white p-2 rounded transition duration-200 hover:bg-stone-600">Confirm</button>
+            <button type="submit" class="w-full bg-stone-700 text-white p-2 rounded transition duration-200 hover:bg-stone-600">
+                Confirm
+            </button>
         </form>
+        <form id="deleteForm" method="POST" action="deleteAccFrm.php">
+                <input type="hidden" name="accountid" value="<?php echo htmlspecialchars($user['accountid']); ?>">
+                <button type="button" class="w-full px-4 py-2 bg-red-500 text-white rounded" 
+                        onclick="confirmDelete()">
+                    Delete Account
+                </button>
+            </form>
     </div>
     </div>
-    <script>
+<script>
+    function confirmDelete() {
+    const confirmation = confirm("Are you sure you want to delete this account?");
+        if (confirmation) {
+            document.getElementById('deleteForm').submit();
+        }
+    }
         document.getElementById('accountForm').addEventListener('submit', function (event) {
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirm-password').value;
