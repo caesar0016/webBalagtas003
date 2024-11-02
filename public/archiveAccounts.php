@@ -15,7 +15,7 @@
         exit();
     }
 
-    $sql = "select * from tblAccount where archiveflag = 1";
+    $sql = "select * from tblAccount where archiveflag = 0";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -25,7 +25,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Accounts</title>
+    <title>archiveAccounts</title>
     <link rel="stylesheet" href="css/style.css">
     
 </head>
@@ -33,11 +33,9 @@
 <div class="max-w-4xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
     <div class="p-6 flex justify-between items-center">
         <h2 class="text-lg font-semibold mb-4">User Accounts</h2>
-        <form action="archiveAccounts.php" method="post">
             <button type="submit" name="trashButton" class="px-4 py-2">
-            🗑️
+            <a href="manageAcc.php">✖️</a>
             </button>
-        </form>
     </div>
     <div class="overflow-x-auto">
         <table class="min-w-full bg-white border border-gray-200">
@@ -56,10 +54,10 @@
                     <td class="py-3 px-6"><?php echo htmlspecialchars($user['username']); ?></td>
                     <td class="py-3 px-6"><?php echo htmlspecialchars($user['accounttype']); ?></td>
                     <td class="py-3 px-6 flex space-x-2">
-                        <form action="editOthersAcc.php" method="post">
+                        <form action="recoverAcc.php" method="post">
                             <input type="hidden" name="sendID" value="<?php echo htmlspecialchars($user['accountid']); ?>">
-                            <button type="submit" name="submitButton" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-                                Edit Account
+                            <button type="submit" name="submitButton" class="px-4 py-2 bg-teal-500 text-black rounded">
+                            <?php echo htmlspecialchars($user['accountid']); ?>
                             </button>
                         </form>
                     </td>
