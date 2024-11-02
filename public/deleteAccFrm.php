@@ -27,6 +27,7 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
         $result = pg_query_params($conn, $query, array($userID));
 
         header("Location: manageAcc.php");
+        exit;
     }else{
         echo "Error: Account ID cannot be found. Please try again.";
     }
