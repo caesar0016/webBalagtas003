@@ -57,6 +57,7 @@ pg_close($conn);
         <h2 class="text-3xl font-bold text-center mb-6">Edit Account</h2>
         <form action="updateAcc.php" method="POST" id="editAccFrm">
             <div class="grid grid-cols gap-4 mb-4">
+                <input type="hidden" name="sendID" value="<?php echo htmlspecialchars($user['accountid']); ?>">
                 <label for="name" class="block text-sm font-medium">Name:</label>
                 <input type="text" id="name" name="name01" required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500" value="<?php echo htmlspecialchars($user['name']); ?>">
 
