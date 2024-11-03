@@ -3,7 +3,7 @@ from databaseConnection import *
 
 tableName = "pwdTable"
 
-def updatePwdDB():
+def pwdUpdate():
     try:
         df = pd.read_excel(pwdPath, sheet_name='Sheet1')
         # print(df)
@@ -12,4 +12,4 @@ def updatePwdDB():
     except Exception as e:
         print(f'Error: {e}')
         
-updatePwdDB()
+pwdUpdate()

@@ -26,7 +26,7 @@ def updateAll():
         literacyUpdate()
         migrationUpdate()
         ofwUpdate()
-        ofwUpdate()
+        pwdUpdate()
         populationUpdate()
         
         print("All File Done inserting")
