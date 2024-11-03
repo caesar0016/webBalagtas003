@@ -39,6 +39,18 @@ engine = create_engine(connectionString)
 
 #////---------------------- Ron Path --------------------------------------
 
+#balagtasPovertyTreshold file path
+povertyPath = 'C:/Users/RonJillMai3/Music/Dataset Municipal/balagtasPovertyTreshold.xlsx'
+
+#dohWithPoints file path
+healthFacilityPath = 'C:/Users/RonJillMai3/Music/Dataset Municipal/dohWithPoints.xlsx'
+
+#foodTreshold  file path
+foodTresholdPath = 'C:/Users/RonJillMai3/Music/Dataset Municipal/foodTreshold.xlsx'
+
+#healthSurvey  file path
+healthSurveyPath = 'C:/Users/RonJillMai3/Music/Dataset Municipal/healthSurvey.xlsx'
+
 # pwd ron path
 pwdPath = 'C:/Users/RonJillMai3/Music/Dataset Municipal/pwd.xlsx'
 

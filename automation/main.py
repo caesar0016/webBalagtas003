@@ -2,6 +2,10 @@ from watchdog.observers import Observer
 import time
 from watchdog.events import FileSystemEventHandler
 
+from povertyHousehold import *
+from dohPoints import *
+from foodThreshold import *
+from healthSurvey import *
 from housingScript import *
 from internetAccess import *
 from literacyRate import *
@@ -13,13 +17,18 @@ from totalPopulationScript import *
 def updateAll():
     try:
         #this is the list of insert
+        povertyTblUpdate()
+        dohPointsUpdate()
+        foodThresholdUpdate()
+        healthSurveyUpdate()
         housingUpdate()
-        updateInternetDB()
-        updateLiteracyDB()
-        updateMigration()
-        updateOfwDB()
-        updatePwdDB()
-        updatePopulation()
+        internetUpdate()
+        literacyUpdate()
+        migrationUpdate()
+        ofwUpdate()
+        ofwUpdate()
+        populationUpdate()
+        
         print("All File Done inserting")
         
     except Exception as e:
