@@ -7,10 +7,16 @@ session_start();
         <h1 class="text-3xl font-medium">
             <a href="mainPage.php">🗺️ Comprehensive Dashboard Balagtas, Bulacan</a>
         </h1>
-        <div class="flex items-center">
+        <div class="flex items-center"> <!--dropdownButton-->
             <div class="relative">
-                <button id="dropdownButton" class="focus:outline-none">
-                    <img src="img/ic_menu.png" alt="Menu Icon" class="w-8 h-8">
+                <button id="dropdownButton" class="focus:outline-none text-black">
+                <div class="text-2xl font-small">
+            <?php
+                if (isset($_SESSION['username01'])) {
+                    echo htmlspecialchars($_SESSION['username01']);
+                }
+                ?>
+            </div>
                 </button>
                 <div id="dropdownMenu" class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg hidden">
                     <ul class="py-2">
@@ -22,13 +28,7 @@ session_start();
                 </div>
             </div>
         </div>
-        <div class="text-3xl font-small">
-            <?php
-            if (isset($_SESSION['username01'])) {
-                echo htmlspecialchars($_SESSION['username01']);
-            }
-            ?>
-        </div>
+       
     </section>
 </header>
 <script>

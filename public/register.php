@@ -20,6 +20,13 @@ $username = $_POST['username01'];
 $password = $_POST['password01'];
 $accountType1 = $_POST['account_type']; // Use accountType01 here
 
+if (strlen($_POST['password01']) < 6) {
+    // Handle error: Password must be at least 6 characters long
+    echo "Password must be at least 6 characters long.";
+    exit();
+}
+
+
 $hashPass = password_hash($password, PASSWORD_DEFAULT);
 
 
