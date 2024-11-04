@@ -16,7 +16,7 @@ class TestDataUpdate(unittest.TestCase):
         with self.assertLogs(level='INFO') as log:  # Capture INFO logs
             foodThresholdUpdate('foodTresholdPath', engine=mock_engine)
         
-        mock_read_excel.assert_called_once_with('foodTresholdPath', sheet_name='Sheet11')
+        mock_read_excel.assert_called_once_with('foodTresholdPath', sheet_name='Sheet1')
         mock_df.to_sql.assert_called_once_with('foodThresholdTbl', mock_engine, if_exists='replace', index=False)
         
         # Check for the success message in the logs

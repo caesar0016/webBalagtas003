@@ -9,7 +9,7 @@ def literacyUpdate():
         # print(df)
         
         df.to_sql(tableName, engine, if_exists='replace', index=False)
-        print("7. Literacy Inserted")
+        print("8. Literacy Inserted")
     except Exception as e:
         print("Error: {e}")
         

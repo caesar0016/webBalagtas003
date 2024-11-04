@@ -39,6 +39,9 @@ engine = create_engine(connectionString)
 
 #////---------------------- Ron Path --------------------------------------
 
+#balagtas Area  file path
+areaBalagtasPath = 'C:/Users/RonJillMai3/Music/Dataset Municipal/balagtasArea.xlsx'
+
 #balagtasPovertyTreshold file path
 povertyPath = 'C:/Users/RonJillMai3/Music/Dataset Municipal/balagtasPovertyTreshold.xlsx'
 

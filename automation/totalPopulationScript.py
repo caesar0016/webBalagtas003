@@ -10,7 +10,7 @@ def populationUpdate():
         
         # Insert the DataFrame into the database
         df.to_sql(tableName, engine, if_exists='replace', index=False)
-        print("11. PopulationData inserted")
+        print("12. PopulationData inserted")
         # print(df)
         
     except Exception as e:

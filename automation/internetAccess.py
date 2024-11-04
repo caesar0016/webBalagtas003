@@ -8,7 +8,7 @@ def internetUpdate():
         df = pd.read_excel(internetFilePath, sheet_name='Sheet1')
         
         df.to_sql(tableName, engine, if_exists='replace', index=False)
-        print("6. Internet Access Inserted")
+        print("7. Internet Access Inserted")
         
     except Exception as e:
         print(f'Error: {e}')

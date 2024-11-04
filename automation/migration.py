@@ -11,7 +11,7 @@ def migrationUpdate():
         
         df.to_sql(tableName, engine, if_exists='replace', index=False)
         
-        print("8. Migration Inserted")
+        print("9. Migration Inserted")
         
     except Exception as e:
         print(f'Error: {e}')
