@@ -15,8 +15,11 @@ try {
     exit();
 }
 
-$sql = "SELECT * FROM tblAccount WHERE archiveflag = 1 ORDER BY name ASC";
+$currentUserID = $_SESSION['accountid'];
+
+$sql = "SELECT * FROM tblAccount WHERE archiveflag = 1 AND accountid <> :currentUserID ORDER BY name ASC";
 $stmt = $pdo->prepare($sql);
+$stmt->bindParam(':currentUserID', $currentUserID);
 $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
