@@ -26,7 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
         $query = "Update tblaccount set archiveflag = 0 where accountid = $1";
         $result = pg_query_params($conn, $query, array($userID));
 
-        header("Location: manageAcc.php");
+        header("Location: manageAcc01.php");
         exit;
     }else{
         echo "Error: Account ID cannot be found. Please try again.";

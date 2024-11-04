@@ -15,7 +15,7 @@ try {
     exit();
 }
 
-$sql = "SELECT * FROM tblAccount WHERE archiveflag = 1";
+$sql = "SELECT * FROM tblAccount WHERE archiveflag = 1 ORDER BY name ASC";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -26,7 +26,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Account</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="bg-blue-100">
     <div class="flex justify-between p-4">
@@ -37,22 +37,23 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="grid grid-cols gap-4 mb-4">
                     <label for="name" class="block text-sm font-medium">Name:</label>
                     <input type="text" id="name" name="name01" required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
-    
+
                     <label for="username" class="block text-sm font-medium">Username:</label>
-                    <input 
-                        type="text" 
-                        id="username" 
-                        name="username01" 
-                        required 
+                    <input
+                        type="text"
+                        id="username"
+                        name="username01"
+                        minlength="10"
+                        required
                         class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        oninput="this.value = this.value.replace(/\s/g, '');"> <!--Disables pressing space-->
+                        oninput="this.value = this.value.replace(/\s/g, '');"  > <!--Disables pressing space-->
                     <label for="password" class="block text-sm font-medium">Password:</label>
                     <input type="password" id="password" name="password01" required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500" maxlength="20" minlength="6"  >
-    
+
                     <label for="confirm-password" class="block text-sm font-medium">Confirm Password:</label>
                     <input type="password" id="confirm-password" name="confirmPass01" required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500" maxlength="20" minlength="6">
                     <div id="error" class="hidden text-red-500">Passwords do not match!</div>
-    
+
                     <fieldset class="mt-4">
                         <legend class="block text-sm font-medium mb-2">Account Type:</legend>
                         <div class="flex items-center mb-2">
@@ -64,10 +65,19 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <label for="admin" class="text-sm">Admin Account</label>
                         </div>
                     </fieldset>
-                    
+
                 </div>
                 <button type="submit" class="w-full bg-stone-700 text-white p-2 rounded transition duration-200 hover:bg-stone-600">Register</button>
             </form>
+            <div id="message" class="text-red-600 mt-4">
+                <?php
+                if (isset($_SESSION['error_username'])) {
+                    echo htmlspecialchars($_SESSION['error_username']); // Use the correct session variable
+                    unset($_SESSION['error_username']); // Clear the message after displaying it
+                } 
+                ?>
+            </div>
+
         </div>
         <div class="w-2/3 bg-white rounded-lg shadow-md p-6">
     <div class="max-w-4xl mx-auto rounded-lg overflow-hidden">
@@ -110,8 +120,6 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </div>
-
-    
 </div>
         </div>
     </div>
