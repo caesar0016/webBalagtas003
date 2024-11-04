@@ -29,6 +29,7 @@ $result = pg_query_params($conn, $query, array($name, $username, $hashPass, $acc
 
 if ($result) {
     echo "Account created successfully!";
+    header("Location: manageAcc.php");
 } else {
     echo "Error: " . pg_last_error($conn);
 }

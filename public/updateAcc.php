@@ -41,6 +41,7 @@
             //Checks if the Update is success or not
             if($result){
                 echo "Update Success";
+                header("Location: manageAcc.php");
             }else{
                 echo "Error: " . pcntl_get_last_error($conn);
             }
