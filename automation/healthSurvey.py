@@ -2,7 +2,7 @@ from databaseConnection import *
 import pandas as pd
 
 #table name which is the housing table
-tableName = 'housingtbl'
+tableName = 'healthSurveyTbl'
 
 def healthSurveyUpdate():
     try:

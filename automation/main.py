@@ -14,8 +14,8 @@ from migration import *
 from ofwScript import *
 from pwdScript import *
 from totalPopulationScript import *
-from maleRatio import *
-from femaleRatio_script import *
+# from maleRatio import *
+# from femaleRatio_script import *
 
 def updateAll():
     try:
@@ -32,8 +32,8 @@ def updateAll():
         ofwUpdate()
         pwdUpdate()
         populationUpdate()
-        maleRatioUpdate()
-        femaleRatioUpdate()
+        # maleRatioUpdate()
+        # femaleRatioUpdate()
                 
         print("All File Done inserting")
         

@@ -31,9 +31,9 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>Manage Account</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-blue-100">
+<body class="bg-orange-300">
     <div class="flex justify-between p-4">
-        <div class="w-1/3 bg-white rounded-lg shadow-md p-6 mr-4">
+        <div class="w-1/3 bg-white rounded-lg shadow-lg p-6 mr-4">
             <!--This is the card 1--->
             <h2 class="text-3xl font-bold text-center mb-6">Register</h2>
             <form action="register.php" method="POST" id="accountForm">

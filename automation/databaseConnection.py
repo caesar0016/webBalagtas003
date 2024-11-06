@@ -28,7 +28,7 @@ engine = create_engine(connectionString)
 # internetFilePath = 'C:/Users/dapit/Documents/Dataset/internet access.xlsx'
 
 # #Literacy Rate dapiton path
-# literacyPath = 'C:/Users/dapit/Documents/Dataset/literacy rate by sex.xlsx'
+# literacyPath = 'C:/Users/dapit/Documents/Dataset/literacy.xlsx'
 
 # #ofw dapiton path
 # ofwPath = 'C:/Users/dapit/Documents/Dataset/ofw.xlsx'
@@ -64,7 +64,7 @@ housingPath = 'C:/Users/RonJillMai3/Music/Dataset Municipal//housing category an
 ofwPath = 'C:/Users/RonJillMai3/Music/Dataset Municipal/ofw.xlsx'
 
 # Literacy Rate ron path
-literacyPath = 'C:/Users/RonJillMai3/Music/Dataset Municipal/literacy rate by sex.xlsx'
+literacyPath = 'C:/Users/RonJillMai3/Music/Dataset Municipal/literacy.xlsx'
 
 # internet Accesss ron path
 internetFilePath = 'C:/Users/RonJillMai3/Music/Dataset Municipal/internet access.xlsx'
