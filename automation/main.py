@@ -27,7 +27,7 @@ def updateAll():
         healthSurveyUpdate()
         housingUpdate()
         internetUpdate()
-        literacyUpdate()
+        literacyUpdate() 
         migrationUpdate()
         ofwUpdate()
         pwdUpdate()
