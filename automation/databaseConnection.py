@@ -6,7 +6,7 @@ db_username = 'postgres'
 db_password = 'Kuz18647'
 db_host = 'localhost'
 db_port = '5432'
-db_name = 'webBalagtas01'
+db_name = 'webBalagtas02' #The database for direct qeury is webBalagtas02
 
 connectionString = f'postgresql://{db_username}:{db_password}@{db_host}:{db_port}/{db_name}'
 engine = create_engine(connectionString)
