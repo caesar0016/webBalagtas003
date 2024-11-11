@@ -40,41 +40,41 @@ engine = create_engine(connectionString)
 #////---------------------- Ron Path --------------------------------------
 
 #balagtas Area  file path
-areaBalagtasPath = 'C:/Users/RonJillMai3/Music/Dataset Municipal/balagtasArea.xlsx'
+areaBalagtasPath = 'C:/Dataset/balagtasArea.xlsx'
 
 #balagtasPovertyTreshold file path
-povertyPath = 'C:/Users/RonJillMai3/Music/Dataset Municipal/balagtasPovertyTreshold.xlsx'
+povertyPath = 'C:/Dataset/balagtasPovertyTreshold.xlsx'
 
 #dohWithPoints file path
-healthFacilityPath = 'C:/Users/RonJillMai3/Music/Dataset Municipal/dohWithPoints.xlsx'
+healthFacilityPath = 'C:/Dataset/dohWithPoints.xlsx'
 
 #foodTreshold  file path
-foodTresholdPath = 'C:/Users/RonJillMai3/Music/Dataset Municipal/foodTreshold.xlsx'
+foodTresholdPath = 'C:/Dataset/foodTreshold.xlsx'
 
 #healthSurvey  file path
-healthSurveyPath = 'C:/Users/RonJillMai3/Music/Dataset Municipal/healthSurvey.xlsx'
+healthSurveyPath = 'C:/Dataset/healthSurvey.xlsx'
 
 # pwd ron path
-pwdPath = 'C:/Users/RonJillMai3/Music/Dataset Municipal/pwd.xlsx'
+pwdPath = 'C:/Dataset/pwd.xlsx'
 
 # #dapiton path
-housingPath = 'C:/Users/RonJillMai3/Music/Dataset Municipal//housing category and household size.xlsx'
+housingPath = 'C:/Dataset/housing category and household size.xlsx'
 
 # ofw ron path
-ofwPath = 'C:/Users/RonJillMai3/Music/Dataset Municipal/ofw.xlsx'
+ofwPath = 'C:/Dataset/ofw.xlsx'
 
 # Literacy Rate ron path
-literacyPath = 'C:/Users/RonJillMai3/Music/Dataset Municipal/literacy.xlsx'
+literacyPath = 'C:/Dataset/literacy.xlsx'
 
 # internet Accesss ron path
-internetFilePath = 'C:/Users/RonJillMai3/Music/Dataset Municipal/internet access.xlsx'
+internetFilePath = 'C:/Dataset/internet access.xlsx'
 
 
 # migration ron path
-migrationPath = 'C:/Users/RonJillMai3/Music/Dataset Municipal/migration.xlsx'
+migrationPath = 'C:/Dataset/migration.xlsx'
 
 # populationPath
-populationPath = 'C:/Users/RonJillMai3/Music/Dataset Municipal/total population by age and by sex.xlsx'
+populationPath = 'C:/Dataset/total population by age and by sex.xlsx'
 
 # ron file path for dataset
-datasetPath = 'C:/Users/RonJillMai3/Music/Dataset Municipal'
+datasetPath = 'C:/Dataset'
