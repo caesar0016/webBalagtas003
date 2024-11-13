@@ -11,33 +11,6 @@ db_name = 'webBalagtas02' #The database for direct qeury is webBalagtas02
 connectionString = f'postgresql://{db_username}:{db_password}@{db_host}:{db_port}/{db_name}'
 engine = create_engine(connectionString)
 
-# #dapiton's file path
-# populationPath = 'C:/Users/dapit/Documents/Dataset/total population by age and by sex.xlsx'
-
-
-# #dapiton file path for dataset
-# datasetPath = 'C:/Users/dapit/Documents/Dataset/'
-
-# #dapiton path
-# housingPath = 'C:/Users/dapit/Documents/Dataset/housing category and household size.xlsx'
-
-# #dapiton ron path
-# migrationPath = 'C:/Users/dapit/Documents/Dataset/migration.xlsx'
-
-# #internet Accesss dapiton path
-# internetFilePath = 'C:/Users/dapit/Documents/Dataset/internet access.xlsx'
-
-# #Literacy Rate dapiton path
-# literacyPath = 'C:/Users/dapit/Documents/Dataset/literacy.xlsx'
-
-# #ofw dapiton path
-# ofwPath = 'C:/Users/dapit/Documents/Dataset/ofw.xlsx'
-
-
-# #pwd dapiton path
-# pwdPath = 'C:/Users/dapit/Documents/Dataset/pwd.xlsx'
-
-#////---------------------- Ron Path --------------------------------------
 
 #balagtas Area  file path
 areaBalagtasPath = 'C:/Dataset/balagtasArea.xlsx'
@@ -68,7 +41,6 @@ literacyPath = 'C:/Dataset/literacy.xlsx'
 
 # internet Accesss ron path
 internetFilePath = 'C:/Dataset/internet access.xlsx'
-
 
 # migration ron path
 migrationPath = 'C:/Dataset/migration.xlsx'
