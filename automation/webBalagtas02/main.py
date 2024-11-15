@@ -35,7 +35,7 @@ def updateAll():
         maleRatioUpdate()
         femaleRatioUpdate()
 
-        print("webBalagtas02 Direct Query")
+        print("-------------------------------webBalagtas02 Direct Query-----------------------------")
         print("All File Done inserting")
         
     except Exception as e:
