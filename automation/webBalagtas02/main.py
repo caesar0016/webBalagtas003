@@ -34,7 +34,8 @@ def updateAll():
         populationUpdate()
         maleRatioUpdate()
         femaleRatioUpdate()
-                
+
+        print("webBalagtas02 Direct Query")
         print("All File Done inserting")
         
     except Exception as e:
