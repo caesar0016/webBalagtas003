@@ -9,6 +9,9 @@ create table tblAccount(
 
 );
 
+insert into tblAccount(name, username, password, accountType) 
+    values ('Admin', 'admin0016', '1234567');
+
 Select * from tblAccount
 
 update tblAccount
