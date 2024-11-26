@@ -1,1 +1,6 @@
 node_modules/
+# Ignore .env file in the automation folder
+automation/.env
+
+# Optionally, ignore all .env files in the repo
+# *.env
