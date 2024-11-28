@@ -83,6 +83,7 @@ class ExcelCsvEventHandler(FileSystemEventHandler):
 
 # Set up Watchdog to monitor the 'C:/Dataset' folder
 if __name__ == "__main__":
+    #--------------------- This is the dataset folder path file ---------------------------------------------
     folder_path = r"C:\Dataset"  # Adjust path to your folder (use raw string for Windows path)
     
     # Initially import all datasets in the folder
