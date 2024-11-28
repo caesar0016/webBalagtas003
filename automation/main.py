@@ -2,21 +2,18 @@ import os
 import time
 import pandas as pd
 from sqlalchemy import create_engine
-from dotenv import load_dotenv
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
-# Load environment variables from the .env file
-load_dotenv('credentials.env')
+# Define PostgreSQL connection details directly in the script
+DB_NAME = "webBalagtas02"
+DB_USER = "postgres"
+DB_PASSWORD = "Kuz18647"
+DB_HOST = "localhost"
+DB_PORT = "5432"
 
-# Retrieve the database URL from the environment variable
-connectionString = os.getenv('DATABASE_URL')
-
-# Check if the environment variable was loaded correctly
-if connectionString:
-    print("Environment variable loaded successfully.")
-else:
-    print("Error: DATABASE_URL environment variable not found.")
+# Create the PostgreSQL connection string
+connectionString = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
 # Create the SQLAlchemy engine using the connection string
 engine = create_engine(connectionString)
@@ -52,7 +49,6 @@ def import_datasets_to_postgres(folder_path):
         else:
             print(f"Skipping unsupported file format: {filename}")
 
-
 # Watchdog Event Handler for File Changes (CSV & Excel)
 class ExcelCsvEventHandler(FileSystemEventHandler):
     def on_modified(self, event):
@@ -80,8 +76,7 @@ class ExcelCsvEventHandler(FileSystemEventHandler):
         except Exception as e:
             print(f"Failed to update database from {event.src_path}: {e}")
 
-
-# Set up Watchdog to monitor the 'C:/Dataset' folder
+# Set up Watchdog to monitor the folder path
 if __name__ == "__main__":
     folder_path = r"C:\Dataset"  # Adjust path to your folder (use raw string for Windows path)
     

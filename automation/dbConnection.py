@@ -22,6 +22,7 @@ try:
     with engine.connect() as connection:
         print("Connection to the database was successful!")
 except Exception as e:
+    print(os.getenv('DATABASE_URL'))
     print(f"Error: {e}")
 
 # This line is just for testing and will be printed regardless of the connection outcome
