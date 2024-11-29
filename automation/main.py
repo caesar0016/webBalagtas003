@@ -6,7 +6,7 @@ from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
 # Define PostgreSQL connection details directly in the script
-DB_NAME = "webBalagtas02"
+DB_NAME = "webBalagtas03"
 DB_USER = "postgres"
 DB_PASSWORD = "Kuz18647"
 DB_HOST = "localhost"
