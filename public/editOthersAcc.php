@@ -13,12 +13,6 @@ $connectionString = "host=$host port=$port dbname=$dbName user=$user password=$p
 // Establish connection
 $conn = pg_connect($connectionString);
 
-// Check connection
-if (!$conn) {
-    die("Connection Failed: " . pg_last_error());
-}else{
-    echo "Connected Successfully";
-}
 
 $user = null; // Initialize user variable
 

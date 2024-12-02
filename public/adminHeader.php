@@ -10,13 +10,16 @@ session_start();
         <div class="flex items-center"> <!--dropdownButton-->
             <div class="relative">
                 <button id="dropdownButton" class="focus:outline-none text-black">
-                <div class="text-2xl font-small">
-            <?php
-                if (isset($_SESSION['username01'])) {
-                    echo htmlspecialchars($_SESSION['username01']);
-                }
-                ?>
-            </div>
+                    <div class="text-2xl font-small">
+                    <?php
+                        if (isset($_SESSION['username01'])) {
+                            echo htmlspecialchars($_SESSION['username01']);
+                        } else {
+                            // If no session, display "Login" as clickable link
+                            echo "<a href='login.php' class='text-2xl'>Login</a>";
+                        }
+                    ?>
+                    </div>
                 </button>
                 <div id="dropdownMenu" class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg hidden">
                     <ul class="py-2">

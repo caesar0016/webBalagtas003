@@ -17,13 +17,13 @@
             &times; <!--Should Replace it-->
         </a>
         <h2 class="text-3xl font-bold text-center mb-6">Account Settings</h2>
-        <form action="register.php" method="POST" id="accountForm">
+        <form action="changePassword.php" method="POST" id="accountForm">
             <div class="grid grid-cols gap-4 mb-4">
                 <label for="name" class="block text-sm font-medium">Name:</label>
-                <input type="text" id="name" name="name01" required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="text" id="name" name="name01" placeholder="<?php echo isset($_SESSION['name']) ? $_SESSION['name'] : ''; ?>" readonly class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100">
 
                 <label for="username" class="block text-sm font-medium">Username:</label>
-                <input type="text" id="username" name="username01" required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="text" id="username" name="username01" placeholder="<?php echo isset($_SESSION['username01']) ? $_SESSION['username01'] : ''; ?>" readonly required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
 
                 <label for="password" class="block text-sm font-medium">New Password:</label>
                 <input type="password" id="password" name="password01" required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500" maxlength="20">
@@ -33,7 +33,7 @@
                 <div id="error" class="hidden text-red-500">Passwords do not match!</div>
                 
             </div>
-            <button type="submit" class="w-full bg-stone-700 text-white p-2 rounded transition duration-200 hover:bg-stone-600">Register</button>
+            <button type="submit" class="w-full bg-stone-700 text-white p-2 rounded transition duration-200 hover:bg-stone-600">Confirm</button>
         </form>
     </div>
     </div>
