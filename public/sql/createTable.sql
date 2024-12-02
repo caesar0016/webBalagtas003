@@ -10,7 +10,7 @@ create table tblAccount(
 );
 
 insert into tblAccount(name, username, password, accountType) 
-    values ('Admin', 'admin0016', '1234567');
+    values ('Admin', 'admin0016', '$2y$10$fxBvX4uAa28gwlRebvtOs.3yzU9FOQfxp4l4GYECI0SE1SR7nvafW');
 
 Select * from tblAccount
 

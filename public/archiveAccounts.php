@@ -3,7 +3,7 @@
 
         // connection.php
     $host = 'localhost';
-    $db = 'webBalagtas01';
+    $db = 'webBalagtas03';
     $user = 'postgres';
     $pass = 'Kuz18647';
 

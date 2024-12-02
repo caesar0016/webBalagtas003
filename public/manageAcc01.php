@@ -3,7 +3,7 @@ include("adminHeader.php");
 
 // connection.php
 $host = 'localhost';
-$db = 'webBalagtas01';
+$db = 'webBalagtas03';
 $user = 'postgres';
 $pass = 'Kuz18647';
 
@@ -36,7 +36,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="w-1/3 bg-white rounded-lg shadow-lg p-6 mr-4">
             <!--This is the card 1--->
             <h2 class="text-3xl font-bold text-center mb-6">Register</h2>
-            <form action="changePassword.php" method="POST" id="accountForm">
+            <form action="register.php" method="POST" id="accountForm">
                 <div class="grid grid-cols gap-4 mb-4">
                     <label for="name" class="block text-sm font-medium">Name:</label>
                     <input type="text" id="name" name="name01" required class="border border-gray-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
