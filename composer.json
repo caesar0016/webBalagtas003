@@ -1,0 +1,7 @@
+{
+    "name": "ronjillmai3/web-balagtas003",
+    "description": "webBalagtas003",
+    "require": {
+        "phpoffice/phpspreadsheet": "^3.5"
+    }
+}
