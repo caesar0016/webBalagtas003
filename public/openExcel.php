@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $sheet !== null) {
     // Loop through the posted data and update the spreadsheet
     foreach ($_POST as $cellReference => $newValue) {
         // Skip the submit button or the "add row" button
-        if ($cellReference != 'submit' && $cellReference != 'addRow') {
+        if ($cellReference != 'submit' && $cellReference != 'addRow' && $cellReference != 'addColumn') {
             // Update the cell with the new value from the form
             $sheet->setCellValue($cellReference, $newValue);
         }
@@ -41,6 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $sheet !== null) {
 
     // Check and remove empty rows
     removeEmptyRows($sheet);
+
+    // Remove empty columns
+    removeEmptyColumns($sheet);
 
     // Save the modified spreadsheet back to the file
     $writer = new Xlsx($spreadsheet);
@@ -66,6 +69,23 @@ if (isset($_POST['addRow']) && $sheet !== null) {
         $cellReference = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($col) . $newRow;
         $sheet->setCellValue($cellReference, ''); // Blank out the new row
     }
+}
+
+// Add a new column if the "Add Column" button is clicked
+if (isset($_POST['addColumn']) && $sheet !== null) {
+    $highestColumn = $sheet->getHighestColumn(); // Get the highest column letter (e.g., 'D')
+    $highestColumnIndex = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($highestColumn); // Convert to column index
+    
+    // Convert the new column index to a column letter
+    $newColumnIndex = $highestColumnIndex + 1;
+    $newColumnLetter = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($newColumnIndex); // Convert back to letter (e.g., 'E')
+
+    // Insert a new column before the new column letter
+    $sheet->insertNewColumnBefore($newColumnLetter, 1); // Insert a new column
+
+    // Optionally, add a header name for the new column (e.g., "New Column")
+    $newColumnHeader = '';
+    $sheet->setCellValue($newColumnLetter . '1', $newColumnHeader); // Set header for the new column
 }
 
 // Function to remove empty rows
@@ -96,6 +116,37 @@ function removeEmptyRows($sheet) {
         // If the row is empty, remove it
         if ($isEmpty) {
             $sheet->removeRow($row);
+        }
+    }
+}
+
+// Function to remove empty columns
+function removeEmptyColumns($sheet) {
+    $highestRow = $sheet->getHighestRow(); // Get the highest row number
+
+    // Get the highest column letter (e.g., 'D')
+    $highestColumn = $sheet->getHighestColumn();
+    // Convert column letter to column index
+    $highestColumnIndex = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($highestColumn);
+
+    // Loop through each column from the last to the first (excluding the header row)
+    for ($col = $highestColumnIndex; $col >= 1; $col--) {
+        $isEmpty = true;
+
+        // Loop through each row in the current column to check if all cells are empty
+        for ($row = 2; $row <= $highestRow; $row++) { // Start from row 2 to skip header
+            $cellReference = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($col) . $row;
+            $cell = $sheet->getCell($cellReference);
+
+            if ($cell->getValue() !== null && $cell->getValue() !== '') {
+                $isEmpty = false;
+                break;
+            }
+        }
+
+        // If the column is empty, remove it
+        if ($isEmpty) {
+            $sheet->removeColumnByIndex($col);
         }
     }
 }
@@ -203,6 +254,11 @@ function removeEmptyRows($sheet) {
                     <!-- Button to Add New Row -->
                     <button type="submit" name="addRow" class="px-6 py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition">
                         Add New Row
+                    </button>
+                    
+                    <!-- Button to Add New Column -->
+                    <button type="submit" name="addColumn" class="px-6 py-3 bg-green-500 text-white rounded-md hover:bg-green-600 transition">
+                        Add New Column
                     </button>
                 </div>
 
