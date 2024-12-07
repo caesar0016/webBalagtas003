@@ -18,6 +18,8 @@ if (!file_exists($filePath)) {
 }
 
 // Try loading the spreadsheet
+$sheet = null; // Initialize $sheet variable to avoid undefined error
+
 try {
     $reader = new XlsxReader();
     $spreadsheet = $reader->load($filePath);
@@ -27,7 +29,7 @@ try {
 }
 
 // Handle form submission to update the Excel data
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && $sheet !== null) {
     // Loop through the posted data and update the spreadsheet
     foreach ($_POST as $cellReference => $newValue) {
         // Skip the submit button or the "add row" button
@@ -47,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 // Add a new row if the "Add Row" button is clicked
-if (isset($_POST['addRow'])) {
+if (isset($_POST['addRow']) && $sheet !== null) {
     $lastRow = $sheet->getHighestRow(); // Get the last row
     $newRow = $lastRow + 1; // Increment for the new row
 
@@ -66,7 +68,6 @@ if (isset($_POST['addRow'])) {
     }
 }
 
-// Function to remove empty rows
 // Function to remove empty rows
 function removeEmptyRows($sheet) {
     $highestRow = $sheet->getHighestRow(); // Get the highest row number
@@ -115,6 +116,19 @@ function removeEmptyRows($sheet) {
             overflow-y: auto;  /* Enable vertical scrolling */
         }
 
+        /* Sticky header style */
+        th {
+            position: sticky;
+            top: 0;
+            background-color: #f3f4f6; /* Make sure the header has a background */
+            z-index: 10; /* Ensure the header stays above the table content */
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px 16px;
+        }
+
         /* Optional: make sure the form's submit and add row buttons do not get pushed out */
         .flex {
             flex-wrap: wrap; /* Allow elements to wrap and avoid layout issues */
@@ -139,38 +153,42 @@ function removeEmptyRows($sheet) {
                     <thead>
                         <tr class="bg-gray-300 text-gray-700">
                             <?php 
-                            // Get the first row (headers) and make them editable
-                            $firstRow = $sheet->getRowIterator()->current(); // Get the first row (headers)
-                            foreach ($firstRow->getCellIterator() as $cell) {
-                                $cellReference = $cell->getCoordinate();
-                                $cellValue = $cell->getValue();
-                                echo "<th class='py-3 px-6 text-left'>
-                                        <input type='text' name='$cellReference' value='" . htmlspecialchars($cellValue) . "' 
-                                        class='w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500' />
-                                      </th>";
+                            if ($sheet !== null) {
+                                // Get the first row (headers) and make them editable
+                                $firstRow = $sheet->getRowIterator()->current(); // Get the first row (headers)
+                                foreach ($firstRow->getCellIterator() as $cell) {
+                                    $cellReference = $cell->getCoordinate();
+                                    $cellValue = $cell->getValue();
+                                    echo "<th class='py-3 px-6 text-left'>
+                                            <input type='text' name='$cellReference' value='" . htmlspecialchars($cellValue) . "' 
+                                            class='w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500' />
+                                          </th>";
+                                }
                             }
                             ?>
                         </tr>
                     </thead>
                     <tbody>
                         <?php 
-                        // Loop through all rows starting from the second row (excluding header)
-                        $rowIndex = 2; // Starting from the second row (row 1 is header)
-                        foreach ($sheet->getRowIterator(2) as $row) {
-                            echo "<tr class='hover:bg-gray-100'>";
-                            $colIndex = 0;
-                            foreach ($row->getCellIterator() as $cell) {
-                                $colLetter = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex(++$colIndex); // Get column letter (A, B, C, ...)
+                        if ($sheet !== null) {
+                            // Loop through all rows starting from the second row (excluding header)
+                            $rowIndex = 2; // Starting from the second row (row 1 is header)
+                            foreach ($sheet->getRowIterator(2) as $row) {
+                                echo "<tr class='hover:bg-gray-100'>";
+                                $colIndex = 0;
+                                foreach ($row->getCellIterator() as $cell) {
+                                    $colLetter = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex(++$colIndex); // Get column letter (A, B, C, ...)
 
-                                $cellValue = $cell->getValue();
-                                $cellReference = $colLetter . $rowIndex; // Get cell reference (e.g., A2, B2, C2)
-                                echo "<td class='py-3 px-6 border text-gray-700'>
-                                        <input type='text' name='$cellReference' value='" . htmlspecialchars($cellValue) . "' 
-                                        class='w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500' />
-                                      </td>";
+                                    $cellValue = $cell->getValue();
+                                    $cellReference = $colLetter . $rowIndex; // Get cell reference (e.g., A2, B2, C2)
+                                    echo "<td class='py-3 px-6 border text-gray-700'>
+                                            <input type='text' name='$cellReference' value='" . htmlspecialchars($cellValue) . "' 
+                                            class='w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500' />
+                                          </td>";
+                                }
+                                echo "</tr>";
+                                $rowIndex++;
                             }
-                            echo "</tr>";
-                            $rowIndex++;
                         }
                         ?>
                     </tbody>
