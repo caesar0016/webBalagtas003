@@ -1,32 +1,32 @@
-<?php
-require 'C:/xampp/htdocs/webBalagtas003/vendor/autoload.php'; // Load Composer's autoloader
+    <?php
+    require 'C:/xampp/htdocs/webBalagtas003/vendor/autoload.php'; // Load Composer's autoloader
 
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-use PhpOffice\PhpSpreadsheet\Reader\Xlsx as XlsxReader;
+    use PhpOffice\PhpSpreadsheet\Spreadsheet;
+    use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+    use PhpOffice\PhpSpreadsheet\Reader\Xlsx as XlsxReader;
 
-// Path to the dataset folder
-$datasetFolder = 'C:/Dataset'; // Change this if needed
+    // Path to the dataset folder
+    $datasetFolder = 'C:/Dataset'; // Change this if needed
 
-// Get the filename from the query string (passed via GET)
-$fileName = urldecode($_GET['file']); // Decode the file name
-$filePath = $datasetFolder . '/' . $fileName; // Full file path
+    // Get the filename from the query string (passed via GET)
+    $fileName = urldecode($_GET['file']); // Decode the file name
+    $filePath = $datasetFolder . '/' . $fileName; // Full file path
 
-// Check if the file exists before proceeding
-if (!file_exists($filePath)) {
-    die("Error: The file does not exist at path: " . $filePath);
-}
+    // Check if the file exists before proceeding
+    if (!file_exists($filePath)) {
+        die("Error: The file does not exist at path: " . $filePath);
+    }
 
-// Try loading the spreadsheet
-$sheet = null; // Initialize $sheet variable to avoid undefined error
+    // Try loading the spreadsheet
+    $sheet = null; // Initialize $sheet variable to avoid undefined error
 
-try {
-    $reader = new XlsxReader();
-    $spreadsheet = $reader->load($filePath);
-    $sheet = $spreadsheet->getActiveSheet(); // Get the active sheet
-} catch (Exception $e) {
-    die('Error loading spreadsheet: ' . $e->getMessage());
-}
+    try {
+        $reader = new XlsxReader();
+        $spreadsheet = $reader->load($filePath);
+        $sheet = $spreadsheet->getActiveSheet(); // Get the active sheet
+    } catch (Exception $e) {
+        die('Error loading spreadsheet: ' . $e->getMessage());
+    }
 
 // Handle form submission to update the Excel data
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && $sheet !== null) {
